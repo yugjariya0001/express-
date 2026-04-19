@@ -148,7 +148,11 @@ export default function CheckoutPage() {
           name: 'Express Tadka',
           description: 'Train Food Order',
           order_id: razorpayOrderId,
-          handler: async (response: { razorpay_order_id: string; razorpay_payment_id: string; razorpay_signature: string }) => {
+          handler: async (response: {
+            razorpay_order_id: string;
+            razorpay_payment_id: string;
+            razorpay_signature: string;
+          }) => {
             try {
               await api.post('/payments/verify', {
                 razorpayOrderId: response.razorpay_order_id,
@@ -166,8 +170,7 @@ export default function CheckoutPage() {
           prefill: { contact: user?.mobile },
           theme: { color: '#f97316' },
         };
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const rzp = new (window as any).Razorpay(options);
+        const rzp = new window.Razorpay(options);
         rzp.open();
       };
     } catch {

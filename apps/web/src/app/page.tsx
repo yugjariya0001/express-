@@ -20,7 +20,7 @@ export default function HomePage() {
           </h1>
           <p className="text-lg sm:text-xl text-orange-100 max-w-2xl mx-auto mb-10">
             Fresh, hot meals delivered right to your seat. No more stale pantry food.
-            Available across India&apos;s railway network.
+            Available across India's railway network.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/search" className="bg-white text-primary-600 font-bold py-4 px-8 rounded-2xl text-lg hover:bg-orange-50 transition-all active:scale-95 shadow-lg">

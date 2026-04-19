@@ -5,9 +5,12 @@ import { authenticate, AuthRequest } from '../middleware/auth';
 
 const router = Router();
 
+// Resolve uploads directory relative to project root, not this file
+const UPLOADS_DIR = path.resolve(__dirname, '..', '..', 'uploads');
+
 const storage = multer.diskStorage({
   destination: (_req, _file, cb) => {
-    cb(null, path.join(__dirname, '../../uploads'));
+    cb(null, UPLOADS_DIR);
   },
   filename: (_req, file, cb) => {
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
