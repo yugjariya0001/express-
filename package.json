@@ -1,0 +1,16 @@
+{
+  "name": "express-tadka",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"pnpm --filter @express-tadka/api dev\" \"pnpm --filter @express-tadka/web dev\"",
+    "build": "pnpm --filter @express-tadka/types build && pnpm --filter @express-tadka/api build && pnpm --filter @express-tadka/web build",
+    "lint": "pnpm -r lint",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.5"
+  }
+}
