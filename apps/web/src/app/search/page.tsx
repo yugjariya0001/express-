@@ -252,7 +252,7 @@ export default function SearchPage() {
         <div className="text-center py-12 text-gray-400">
           <Train className="w-16 h-16 mx-auto mb-4 opacity-30" />
           <p className="text-lg">Search for your train to get started</p>
-          <p className="text-sm mt-2">Try &quot;Rajdhani&quot; or &quot;12301&quot;</p>
+          <p className="text-sm mt-2">{'Try "Rajdhani" or "12301"'}</p>
         </div>
       )}
     </div>

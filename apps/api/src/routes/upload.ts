@@ -5,7 +5,9 @@ import { authenticate, AuthRequest } from '../middleware/auth';
 
 const router = Router();
 
-// Resolve uploads directory relative to project root, not this file
+// Resolve uploads directory from the project root (apps/api/uploads).
+// __dirname points to apps/api/src/routes at runtime (or apps/api/dist/routes after build),
+// so we go two levels up to reach apps/api, then into uploads/.
 const UPLOADS_DIR = path.resolve(__dirname, '..', '..', 'uploads');
 
 const storage = multer.diskStorage({
