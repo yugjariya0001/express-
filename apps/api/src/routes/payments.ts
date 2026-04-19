@@ -8,12 +8,11 @@ import { env } from '../config/env';
 const router = Router();
 
 // Lazy load Razorpay to avoid startup errors when key is not set
-const getRazorpay = () => {
+const getRazorpay = async () => {
   if (!env.RAZORPAY_KEY_ID || !env.RAZORPAY_KEY_SECRET) {
     return null;
   }
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const Razorpay = require('razorpay');
+  const { default: Razorpay } = await import('razorpay');
   return new Razorpay({
     key_id: env.RAZORPAY_KEY_ID,
     key_secret: env.RAZORPAY_KEY_SECRET,
@@ -40,7 +39,7 @@ router.post(
         return;
       }
 
-      const razorpay = getRazorpay();
+      const razorpay = await getRazorpay();
       if (!razorpay) {
         // Mock response for development without Razorpay credentials
         const mockOrderId = `order_mock_${Date.now()}`;
